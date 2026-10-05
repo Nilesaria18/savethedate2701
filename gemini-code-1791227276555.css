@@ -1,0 +1,258 @@
+/* Color Variables & Reset */
+:root {
+  --primary-red: #dc2626;
+  --dark-red: #991b1b;
+  --light-red: #fca5a5;
+  --primary-blue: #2563eb;
+  --dark-blue: #1e3a8a;
+  --sky-blue: #38bdf8;
+  --bg-dark: #0a192f;
+  --card-bg: rgba(15, 23, 42, 0.75);
+  --text-light: #f8fafc;
+  --accent-yellow: #f59e0b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  overflow-x: hidden;
+}
+
+/* Background SVG Container */
+.svg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#scene {
+  width: 100%;
+  height: 100%;
+}
+
+/* Foreground Scroll Content */
+.content-container {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 5vh 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 60vh; /* Spacing sections along the scroll path */
+}
+
+/* Glassmorphism Cards */
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(37, 99, 235, 0.2);
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+}
+
+/* Hero Section */
+.hero-card .tag {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.9rem;
+  color: var(--sky-blue);
+  font-weight: 600;
+}
+
+.hero-card h1 {
+  font-size: 2.5rem;
+  margin: 15px 0;
+  color: #ffffff;
+  text-shadow: 0 0 10px var(--primary-red);
+}
+
+.ampersand {
+  color: var(--primary-red);
+}
+
+.subtitle {
+  color: var(--light-red);
+  font-size: 1.1rem;
+}
+
+/* Dates */
+.dates {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.date-highlight {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--sky-blue);
+  background: rgba(37, 99, 235, 0.2);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--primary-blue);
+}
+
+.date-sep {
+  color: var(--primary-red);
+  font-weight: bold;
+}
+
+.location-tag {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+}
+
+/* Countdown Grid */
+.timer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.time-box {
+  background: rgba(153, 27, 27, 0.3);
+  border: 1px solid var(--primary-red);
+  border-radius: 8px;
+  padding: 10px 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.time-box span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.time-box label {
+  font-size: 0.75rem;
+  color: var(--sky-blue);
+  margin-top: 4px;
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+  color: #ffffff;
+  border: 1px solid var(--sky-blue);
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+  background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* Modal Window */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 25, 47, 0.85);
+  backdrop-filter: blur(5px);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: #0f172a;
+  border: 2px solid var(--primary-blue);
+  border-radius: 16px;
+  padding: 30px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--sky-blue);
+  margin-bottom: 5px;
+}
+
+.form-group input, .form-group select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--dark-blue);
+  background: #1e293b;
+  color: #ffffff;
+  outline: none;
+}
+
+.form-group input:focus, .form-group select:focus {
+  border-color: var(--primary-red);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  .hero-card h1 {
+    font-size: 1.8rem;
+  }
+  .date-highlight {
+    font-size: 1.1rem;
+  }
+  .content-container {
+    gap: 50vh;
+  }
+}
